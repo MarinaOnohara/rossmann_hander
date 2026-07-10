@@ -1,7 +1,7 @@
 import os
 import pickle
 import pandas as pd
-from flask import Flask, request, Response
+from flask import Flask, Request, Response
 from rossmann.Rossmann import Rossmann
 
 # loading model
@@ -12,7 +12,7 @@ app = Flask( __name__ )
 
 @app.route( '/rossmann/predict', methods=['POST'] )
 def rossmann_predict():
-    test_json = request.get_json()
+    test_json = Request.get_json()
     
     if test_json: # sehouver dados
         if isinstance( test_json, dict ): # unique example
